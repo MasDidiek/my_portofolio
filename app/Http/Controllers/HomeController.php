@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+         $portofolios = Portofolio::all();
+           return view('home', compact('portofolios'));
     }
 }
