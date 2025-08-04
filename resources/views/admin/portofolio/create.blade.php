@@ -69,7 +69,7 @@
                     <h1 class="h2">Dashboard</h1>
                     <div class="main-content p-4 mt-4 bg-white rounded shadow-sm">
                         <h4 class="mb-4">Add New Portofolio</h4>
-                
+
 
                         <form action="{{ route('portofolio.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -99,8 +99,8 @@
                                 <label for="status" class="form-label">Status</label>
                                 <select class="form-select" id="status" name="status" required>
                                     <option value="">Select Status</option>
-                                    <option value="draft">Draft</option>
-                                    <option value="published">Published</option>
+                                    <option value="Running">Running</option>
+                                    <option value="Archived">Archived</option>
                                 </select>
                             </div>
 
@@ -121,7 +121,7 @@
             </div>
         </div>
 
-   
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

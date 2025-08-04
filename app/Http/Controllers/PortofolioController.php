@@ -31,20 +31,29 @@ class PortofolioController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $portofolio = new Portofolio();
-        $portofolio->title = $request->title;
-        $portofolio->description = $request->description;
 
-        if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $portofolio->image = $imageName;
+    // Create new portofolio instance and populate with validated data
+            $portofolio = new Portofolio();
+            $portofolio->judul = $request->judul;
+            $portofolio->shortdesc = $request->shortdesc;
+            $portofolio->longdesc = $request->longdesc;
+            $portofolio->difficulty = $request->difficulty;
+            $portofolio->status = $request->status;
+            $portofolio->link_app = $request->link_app;
+
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                $imageName = time().'.'.$request->image->extension();
+                $request->image->move(public_path('images'), $imageName);
+                $portofolio->image = $imageName;
+            }
+
+            $portofolio->save();
+
+            return redirect()->route('portofolio.index')->with('success', 'Portofolio created successfully.');
+
+
         }
-
-        $portofolio->save();
-
-        return redirect()->route('portofolio.index')->with('success', 'Portofolio created successfully.');
-}
 
 
 }
